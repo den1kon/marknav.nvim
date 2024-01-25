@@ -1,6 +1,14 @@
-# Marknav
+<h1 align="center">
+  marknav.nvim
+</h1>
 
-This plugin adds markdown file navigation to Neovim.
+<p align="center">Markdown link navigation for Neovim written in pure lua.</p>
+
+###### :exclamation: **IMPORTANT**: Windows OS is not supported yet. Unix-like OS only (MacOS, GNU/Linux...)
+
+- [Installation](#installation)
+- [Setup](#setup)
+- [Usage](#usage)
 
 ## Installation
 
@@ -25,4 +33,14 @@ To initialize marknav, run the `setup` function.
 require("marknav").setup()
 ```
 
+## Usage
+Do not forget to set \<Leader\> in your `init.lua` (e.g. set to **space** - `vim.g.mapleader = " "`)
+| Command          | Default Keybind        | Description                                                  |
+|------------------|------------------------|--------------------------------------------------------------|
+| `:MarknavJump`   | **Enter**              | Open a link under cursor                                     |
+| `:MarknavTab`    | **\<Leader\> + Enter** | Open a link under cursor in a new tab                        |
+| `:MarknavBack`   | **Backspace**          | Go back to previous file                                     |
+| `:MarknavJumpTo` | **\<Leader\> + m**     | Follow nth link (opens interactive dialog at the bottom)     |
+
+All commands and keybinds are available exclusively in Markdown files.
 
