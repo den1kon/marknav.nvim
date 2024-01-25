@@ -4,6 +4,8 @@
 
 <p align="center">Markdown link navigation for Neovim written in pure lua.</p>
 
+![DEMO GIF](https://github.com/daenikon/marknav.nvim/assets/91436186/fa9e1b0d-0c60-4496-a491-3bf5148a8a76)
+
 ###### :exclamation: **IMPORTANT**: Windows OS is not supported yet. Unix-like OS only (MacOS, GNU/Linux...)
 
 - [Installation](#installation)
@@ -34,7 +36,7 @@ require("marknav").setup()
 ```
 
 ## Usage
-Do not forget to set \<Leader\> in your `init.lua` (e.g. set to **space** - `vim.g.mapleader = " "`)
+All commands and keybinds are available exclusively in Markdown files.
 | Command          | Default Keybind        | Description                                                  |
 |------------------|------------------------|--------------------------------------------------------------|
 | `:MarknavJump`   | **Enter**              | Open a link under cursor                                     |
@@ -42,5 +44,5 @@ Do not forget to set \<Leader\> in your `init.lua` (e.g. set to **space** - `vim
 | `:MarknavBack`   | **Backspace**          | Go back to previous file                                     |
 | `:MarknavJumpTo` | **\<Leader\> + m**     | Follow nth link (opens interactive dialog at the bottom)     |
 
-All commands and keybinds are available exclusively in Markdown files.
+Do not forget to set \<Leader\> in your `init.lua` (e.g. set to **space** - `vim.g.mapleader = " "`)
 
