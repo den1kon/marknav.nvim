@@ -48,9 +48,13 @@ end
 -- used in MarknavTab
 function M.validate(abs_path)
   -- File Unreadable
-  if vim.fn.filereadable(abs_path) == 0 then vim.api.nvim_err_writeln("MARKNAV: File doesn't exist or unreadable") return false end
+  --if vim.fn.filereadable(abs_path) == 0 then vim.api.nvim_err_writeln("MARKNAV: File doesn't exist or unreadable") return false end
+  
   -- Non-Markdown file
   if not abs_path:match("%.md$") then vim.api.nvim_err_writeln("MARKNAV: Link points to non-markdown file") return false end 
+
+  -- If file doesn't exist - print the it was created
+  if vim.fn.filereadable(abs_path) == 0 then print("MARKNAV: Created New File") end
   return true
 end
 
