@@ -13,12 +13,12 @@ Utilize buffers, windows and tabs.
 - [x] Open link in a new tab (similar to "Shift+Enter" in browser)
     * [ ] Tab title should be file name
 - [ ] Open link side-by-side - window split
+   * [x] Improve buffer logic
 - [ ] Autocommands on file-open or save
 
 - [ ] ? Vim signs to visually mark lines that contain links
 - [ ] ? Customize the appearance of links: highlighting? underscoring? shrink link to name similar to vimwiki?
     * use Neovim highlight groups for that so highlighting would be consistent with user's colorscheme
-- [ ] ? Remove error message when any key is pressed
 
 ## Location/QuickFix lists
 
@@ -43,15 +43,18 @@ Implement cache in lua or with built-in neo(vim) features?
 - [x] Window-scoped buffer stack (lua table with buffer chain) using `BufEnter` autocmd
 
 ## Minor
+- [x] Clean bottom message line on link follow
+- [x] Red error message
+- [x] Disable `:MarknavJump` to the same file
+- [x] Support absolute paths and paths relative to the directory the file is in
+- [x] `:MarknavJump` recognize different links on the same line
 
+- [ ] If the link is valid, but file doesn't exist - create new file
 - [ ] ? Autosave on `:MarknavJump` and `:MarknavBack`
 - [ ] ? Consider using `fnamemodify()` for path concatenation. Should be platform-indepent and more robust
 - [ ] ? Add bullet list and numbered list characters to pattern ("*", "-", "10.")
 - [ ] ? Consider `gf` and `goto` built-in commands
 - [ ] ? Consider `isfname`
 
-- [x] Red error message
-- [x] Disable `:MarknavJump` to the same file
-- [x] Support absolute paths and paths relative to the directory the file is in
-- [x] `:MarknavJump` recognize different links on the same line
+
 
