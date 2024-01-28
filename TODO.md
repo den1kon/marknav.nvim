@@ -8,6 +8,7 @@
 
 Utilize buffers, windows and tabs.
 
+- [x] Windows support through Vim's `fnamemodify` and native path recognition
 - [x] Better filetype detect and make plugin usable only in markdown files
 - [x] Default keymaps
 - [x] Open link in a new tab (similar to "Shift+Enter" in browser)
@@ -29,12 +30,6 @@ Similar functionality to "Ctrl-F" in browser. Addition: window that shows list o
 - Links can be examined one by one with `:lnext` / `:lprevious` or `:cnext` / `:cprevious` (similar to "Ctrl-F" in browser)
 - History can be examined with `:lnewer` / `:lolder` or `:cnewer` / `:colder`
 
-## Windows Support
-
-Right now just Unix-like paths are supported.
-
-- Look into `fnamemodify`
-
 ## Enhanced Buffer Management
 
 Retain buffer history or delete the buffer on buffer-change?
@@ -48,8 +43,8 @@ Implement cache in lua or with built-in neo(vim) features?
 - [x] Disable `:MarknavJump` to the same file
 - [x] Support absolute paths and paths relative to the directory the file is in
 - [x] `:MarknavJump` recognize different links on the same line
+- [x] If the link is valid, but file doesn't exist - create new file
 
-- [ ] If the link is valid, but file doesn't exist - create new file
 - [ ] ? Autosave on `:MarknavJump` and `:MarknavBack`
 - [ ] ? Consider using `fnamemodify()` for path concatenation. Should be platform-indepent and more robust
 - [ ] ? Add bullet list and numbered list characters to pattern ("*", "-", "10.")

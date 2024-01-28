@@ -6,8 +6,6 @@
 
 ![DEMO GIF](https://github.com/daenikon/marknav.nvim/assets/91436186/933d4cdb-5150-4c0b-98d8-278bf96dd6d4)
 
-###### :exclamation: **IMPORTANT**: Windows OS is not supported yet. Unix-like OS only (MacOS, GNU/Linux...)
-
 - [Installation](#installation)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -42,7 +40,6 @@ All commands and keybinds are available exclusively in Markdown files.
 | `:MarknavJump`   | **Enter**              | Open a link under cursor                                     |
 | `:MarknavTab`    | **\<Leader\> + Enter** | Open a link under cursor in a new tab                        |
 | `:MarknavBack`   | **Backspace**          | Go back to previous file                                     |
-| `:MarknavJumpTo` | **\<Leader\> + m**     | Follow nth link (opens interactive dialog at the bottom)     |
 
 Do not forget to set \<Leader\> in your `init.lua` (e.g. set to **space** - `vim.g.mapleader = " "`)
 
