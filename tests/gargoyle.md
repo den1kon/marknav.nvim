@@ -1,4 +1,3 @@
-# Gargoyle
 ```
    _____                             _      
   / ____|                           | |     
@@ -9,9 +8,13 @@
                     __/ |       __/ |       
                    |___/       |___/
 ```
-# Nav
+
 * [Index](index.md)
-* [Dragon](dragon.md)
+* [Royal Wyvern](royal_wyvern.md)
+* [Succubus](succubus.md)
+* [Alp](alp.md)
+* [Ghoul](ghoul.md)
+* [Werewolf](werewolf.md)
 
 
 # Entry
