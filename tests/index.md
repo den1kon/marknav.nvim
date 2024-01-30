@@ -15,3 +15,6 @@
 * [Alp](alp.md)
 * [Ghoul](ghoul.md)
 * [Werewolf](werewolf.md)
+
+# References
+- [The Witcher 3 bestiary](https://witcher.fandom.com/wiki/The_Witcher_3_bestiary)
