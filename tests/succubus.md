@@ -16,7 +16,7 @@
 * [Ghoul](ghoul.md)
 * [Werewolf](werewolf.md)
 
-# Entry
+# Bestiary entry
 > *Unlike other monsters, succubi and menads feel no desire to kill, do not crave
 > human blood and usually do not, in fact, mean any harm at all. They are
 > motivated by one thing and one thing only: an insatiable lust. They try in vain

@@ -16,7 +16,7 @@
 * [Ghoul](ghoul.md)
 * [Werewolf](werewolf.md)
 
-# Entry
+# Bestiary entry
 > *A hunter who knows his prey's habits and behavior will rarely return from his
 > hunt empty-handed. To know what forest paths deer are like to trod, to know in
 > what muck boars will wallow, to guess when a hare will emerge from its burrow -

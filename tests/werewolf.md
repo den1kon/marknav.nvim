@@ -16,7 +16,7 @@
 * [Alp](alp.md)
 * [Ghoul](ghoul.md)
 
-# Entry
+# Bestiary entry
 > *Werewolves are creatures with both men and wolves inside them. When in beastly
 > form, they take the worst traits of each: the wolf's drive to kill and hunger
 > for raw flesh and the man's cruel and calculating intelligence. A werewolf's

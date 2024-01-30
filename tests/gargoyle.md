@@ -17,7 +17,7 @@
 * [Werewolf](werewolf.md)
 
 
-# Entry
+# Bestiary entry
 > In times long gone, when youth was more
 > polite, everything was cheaper, and girls
 > were more eager, sorcerers could breathe life
