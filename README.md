@@ -4,7 +4,7 @@
 
 <p align="center">Markdown link navigation for Neovim written in pure lua.</p>
 
-![DEMO GIF](https://github.com/daenikon/marknav.nvim/assets/91436186/933d4cdb-5150-4c0b-98d8-278bf96dd6d4)
+![DEMO GIF](https://github.com/daenikon/marknav.nvim/assets/91436186/867a3712-0360-4b9c-9353-250fb6d0fb2e)
 
 - [Installation](#installation)
 - [Setup](#setup)
