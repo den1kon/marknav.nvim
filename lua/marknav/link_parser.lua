@@ -53,14 +53,23 @@ local function validate(abs_path)
   return true
 end
 
+local function is_ToC_link(str)
+  return str:match("^%s*[%*%-]%s+%[[^%]]+%]%([^%)]+%)%s*$") ~= nil
+end
+
 function M.get_absolute_path(str, cursor_pos)
   -- pattern for markdown links e.g. [link](link.md) and extracts the path
   local pattern = '%[[^%]]+%]%(([^%)%]]*)%)'
   local links = find_links(str, pattern) -- get table of links
   local path = get_link_at_cursor_position(links, cursor_pos) -- get path based on cursor
 
+  -- check whether the links is from Table of Contents
   if not path then
-    return nil, "No link found at cursor position" -- return nil and error message
+    if is_ToC_link(str) then
+      path = links[1].linkStr
+    else
+      return nil, "No link found at cursor position" -- return nil and error message
+    end
   end
 
   local absolute_path

@@ -38,6 +38,7 @@ Implement cache in lua or with built-in neo(vim) features?
 - [x] Window-scoped buffer stack (lua table with buffer chain) using `BufEnter` autocmd
 
 ## Minor
+- [x] Recognize ToC links (links that are in bullet lists)
 - [x] Clean bottom message line on link follow
 - [x] Red error message
 - [x] Disable `:MarknavJump` to the same file
