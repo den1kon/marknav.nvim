@@ -7,8 +7,9 @@ local M = {}
 function M.setup(user_config)
   user_config = user_config or { use_default_keybinds = true }
   
-  -- Update buffer every time the buffer or window is entered, while in markdown file
   local augroup = vim.api.nvim_create_augroup("MarknavAutocommands", { clear = true })
+
+  -- Update buffer every time the buffer or window is entered, while in markdown file
   vim.api.nvim_create_autocmd({"BufEnter", "WinEnter"}, {
     group = augroup,
     pattern = {"*.md", "*.markdown"},
@@ -16,8 +17,13 @@ function M.setup(user_config)
   })
 
   vim.api.nvim_create_autocmd("FileType", {
+    group = augroup,
     pattern = "markdown",
     callback = function()
+      -- Set conceal options for syntax
+      vim.opt_local.conceallevel = 2
+      vim.opt_local.concealcursor = 'nc'
+
       -- User Commands
       vim.api.nvim_create_user_command('MarknavJump', CmdHandler.forward_jump, {nargs = 0})
       vim.api.nvim_create_user_command('MarknavBack', CmdHandler.back_jump, {nargs = 0})
