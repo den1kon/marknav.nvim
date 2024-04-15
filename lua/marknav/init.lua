@@ -22,6 +22,11 @@ function M.setup(user_config)
     callback = function()
       -- Set conceal options for syntax
       vim.opt_local.conceallevel = 2
+      -- Set tab to 2 spaces
+      vim.opt_local.tabstop = 2
+      vim.opt_local.shiftwidth = 2
+      vim.opt_local.softtabstop = 2
+      vim.opt_local.expandtab = true
 
       -- User Commands
       vim.api.nvim_create_user_command('MarknavJump', CmdHandler.forward_jump, {nargs = 0})
