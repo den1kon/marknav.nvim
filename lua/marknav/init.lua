@@ -22,7 +22,6 @@ function M.setup(user_config)
     callback = function()
       -- Set conceal options for syntax
       vim.opt_local.conceallevel = 2
-      vim.opt_local.concealcursor = 'nc'
 
       -- User Commands
       vim.api.nvim_create_user_command('MarknavJump', CmdHandler.forward_jump, {nargs = 0})
