@@ -26,7 +26,13 @@ Intended to be minimal, fast, and simple to use.
 
 ### [lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
-{ 'daenikon/marknav.nvim' }
+{
+  "daenikon/marknav.nvim",
+  ft = { "markdown", "md" },
+  config = function()
+    require("marknav").setup()
+  end
+}
 ```
 ### [packer.nvim](https://github.com/wbthomason/packer.nvim)
 ```lua
@@ -43,6 +49,8 @@ After installation, initialize marknav by adding the following to your Neovim co
 ```lua
 require("marknav").setup()
 ```
+
+The above line is redundant with the provided config for lazy.nvim.
 
 ## Usage
 `marknav.nvim` is designed to work exclusively within Markdown files, offering the following commands and keybindings:
