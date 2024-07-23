@@ -30,10 +30,10 @@ function M.setup(user_config)
 
       -- Keybindings
       if user_config.use_default_keybinds then
-        local opts = { noremap = true, silent = true }
-        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader><CR>', ':MarknavJump<CR>', opts)
-        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader><BS>', ':MarknavBack<CR>', opts)
-        --vim.api.nvim_buf_set_keymap(0, 'n', '<Leader><CR>', ':MarknavTab<CR>', opts)
+        local opts = { noremap = false, silent = true }
+        vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', ':MarknavJump<CR>', opts)
+        vim.api.nvim_buf_set_keymap(0, 'n', '<BS>', ':MarknavBack<CR>', opts)
+        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader><CR>', ':MarknavTab<CR>', opts)
       end
     end,
   })
