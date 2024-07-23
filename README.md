@@ -56,9 +56,8 @@ The above line is redundant with the provided config for lazy.nvim.
 `marknav.nvim` is designed to work exclusively within Markdown files, offering the following commands and keybindings:
 | Command          | Default Keybind        | Description                                                            |
 |------------------|------------------------|------------------------------------------------------------------------|
-| `:MarknavJump`   | **Enter**              | Jump to the link under the cursor.                                     |
-| `:MarknavTab`    | **\<Leader\> + Enter** | Open the link under the cursor in a new tab.                           |
-| `:MarknavBack`   | **Backspace**          | Navigate back to the previous file.                                    |
+| `:MarknavJump`   | **\<Leader\> + Enter**       | Jump to the link under the cursor.                                     |
+| `:MarknavBack`   | **\<Leader\> + Backspace**   | Navigate back to the previous file.                                    |
 
 Ensure you have a \<Leader\> key set in your `init.lua` for optimal use. For example, to set the spacebar as your leader key:
 ```lua
