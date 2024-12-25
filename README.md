@@ -56,7 +56,7 @@ The above line is redundant with the provided config for lazy.nvim.
 `marknav.nvim` is designed to work exclusively within Markdown files, offering the following commands and keybindings:
 | Command          | Default Keybind        | Description                                                            |
 |------------------|------------------------|------------------------------------------------------------------------|
-| `:MarknavJump`     | **\<Leader\> + f**         | Jump to the link under the cursor.                                     |
+| `:MarknavJump`     | **\<Leader\> + g**         | Jump to the link under the cursor.                                     |
 | `:MarknavBack`     | **\<Leader\> + b**         | Navigate back to the previous file.                                    |
 | `:MarknavTab`      | **\<Leader\> + Enter**     | Jump to the link under the cursor in a new tab                         |
 
