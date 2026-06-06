@@ -27,14 +27,6 @@ function M.setup(user_config)
       vim.api.nvim_create_user_command('MarknavJump', CmdHandler.forward_jump, {nargs = 0})
       vim.api.nvim_create_user_command('MarknavBack', CmdHandler.back_jump, {nargs = 0})
       vim.api.nvim_create_user_command('MarknavTab', CmdHandler.forward_tab_jump, {nargs = 0})
-
-      -- Keybindings
-      if user_config.use_default_keybinds then
-        local opts = { noremap = true, silent = true }
-        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>g', ':MarknavJump<CR>', opts)
-        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>b', ':MarknavBack<CR>', opts)
-        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader><CR>', ':MarknavTab<CR>', opts)
-      end
     end,
   })
 end
