@@ -1,34 +1,34 @@
-local BufferManager = require("marknav.buffer_manager") 
+local BufferManager = require("marknav.buffer_manager")
 local CmdHandler = require("marknav.command_handler")
 
 local M = {}
 
 -- Set up commands for Markdown file navigation
 function M.setup(user_config)
-  user_config = user_config or { use_default_keybinds = true }
-  
-  local augroup = vim.api.nvim_create_augroup("MarknavAutocommands", { clear = true })
+	user_config = user_config or {}
 
-  -- Update buffer every time the buffer or window is entered, while in markdown file
-  vim.api.nvim_create_autocmd({"BufEnter", "WinEnter"}, {
-    group = augroup,
-    pattern = {"*.md", "*.markdown"},
-    callback = BufferManager.handle_stack
-  })
+	local augroup = vim.api.nvim_create_augroup("MarknavAutocommands", { clear = true })
 
-  vim.api.nvim_create_autocmd("FileType", {
-    group = augroup,
-    pattern = "markdown",
-    callback = function()
-      -- Set conceal options for syntax
-      vim.opt_local.conceallevel = 2
+	-- Update buffer every time the buffer or window is entered, while in markdown file
+	vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+		group = augroup,
+		pattern = { "*.md", "*.markdown" },
+		callback = BufferManager.handle_stack,
+	})
 
-      -- User Commands
-      vim.api.nvim_create_user_command('MarknavJump', CmdHandler.forward_jump, {nargs = 0})
-      vim.api.nvim_create_user_command('MarknavBack', CmdHandler.back_jump, {nargs = 0})
-      vim.api.nvim_create_user_command('MarknavTab', CmdHandler.forward_tab_jump, {nargs = 0})
-    end,
-  })
+	vim.api.nvim_create_autocmd("FileType", {
+		group = augroup,
+		pattern = "markdown",
+		callback = function()
+			-- Set conceal options for syntax
+			vim.opt_local.conceallevel = 2
+
+			-- User Commands
+			vim.api.nvim_create_user_command("MarknavJump", CmdHandler.forward_jump, { nargs = 0 })
+			vim.api.nvim_create_user_command("MarknavBack", CmdHandler.back_jump, { nargs = 0 })
+			vim.api.nvim_create_user_command("MarknavTab", CmdHandler.forward_tab_jump, { nargs = 0 })
+		end,
+	})
 end
 
 return M
