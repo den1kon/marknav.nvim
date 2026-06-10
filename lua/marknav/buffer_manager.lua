@@ -19,8 +19,13 @@ function M.handle_stack()
 	vim.cmd("echo")
 end
 
+---@return integer buffer
 function M.get_previous_buffer()
 	local temp_stack = vim.w.buffer_stack
+
+	if temp_stack == nil then
+		return
+	end
 	-- return if stack is empty
 	if #temp_stack <= 1 then
 		return
