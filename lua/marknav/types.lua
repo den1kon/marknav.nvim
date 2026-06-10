@@ -1,3 +1,4 @@
+---@meta _
 ---@alias LinkKind "markdown" | "wikilink"
 
 ---@class (exact) LinkMatch
