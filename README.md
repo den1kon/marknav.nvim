@@ -30,7 +30,13 @@ Intended to be minimal, fast, and simple to use.
   "den1kon/slipnote.nvim",
   ft = { "markdown", "md" },
   config = function()
-    require("slipnote").setup()
+    require("slipnote").setup({
+      conceal = {
+        enable = true,
+        wikilinks = true,
+        cursor = "nc",
+      },
+    })
   end
 }
 ```
@@ -47,10 +53,22 @@ Plug 'den1kon/slipnote.nvim'
 After installation, initialize slipnote by adding the following to your Neovim configuration:
 
 ```lua
-require("slipnote").setup()
+require("slipnote").setup() -- conceal off by default; link commands only
 ```
 
-The above line is redundant with the provided config for lazy.nvim.
+Optional conceal (off by default):
+
+```lua
+require("slipnote").setup({
+  conceal = {
+    enable = true,    -- master switch; must be true for options below
+    wikilinks = true, -- hide [[wikilink]] markup
+    cursor = "nc",    -- concealcursor
+  },
+})
+```
+
+The above code is redundant with the provided config for lazy.nvim.
 
 ## Usage
 `slipnote.nvim` is designed to work exclusively within Markdown files, offering the following commands:
