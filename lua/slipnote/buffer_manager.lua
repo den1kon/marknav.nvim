@@ -13,11 +13,8 @@ function M.handle_stack()
 	if #temp_stack > 1000 then
 		table.remove(temp_stack, 1)
 	end
-	-- Update window-scoped table
 	table.insert(temp_stack, current_buf)
 	vim.w.buffer_stack = temp_stack
-	-- Clear errors if any
-	vim.cmd("echo")
 end
 
 ---Pop and return the previous buffer from the stack
@@ -30,9 +27,14 @@ function M.get_previous_buffer()
 	end
 
 	table.remove(temp_stack)
-	local prevBuf = table.remove(temp_stack)
+	local prev_buf = table.remove(temp_stack)
 	vim.w.buffer_stack = temp_stack
-	return prevBuf
+
+	if prev_buf ~= nil and not vim.api.nvim_buf_is_valid(prev_buf) then
+		return nil
+	end
+
+	return prev_buf
 end
 
 return M
