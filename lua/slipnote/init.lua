@@ -1,5 +1,5 @@
-local BufferManager = require("marknav.buffer_manager")
-local CmdHandler = require("marknav.command_handler")
+local BufferManager = require("slipnote.buffer_manager")
+local CmdHandler = require("slipnote.command_handler")
 
 local M = {}
 
@@ -7,7 +7,7 @@ local M = {}
 function M.setup(user_config)
 	user_config = user_config or {}
 
-	local augroup = vim.api.nvim_create_augroup("MarknavAutocommands", { clear = true })
+	local augroup = vim.api.nvim_create_augroup("SlipnoteAutocommands", { clear = true })
 
 	-- Update buffer every time the buffer or window is entered, while in markdown file
 	vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
@@ -24,9 +24,9 @@ function M.setup(user_config)
 			vim.opt_local.conceallevel = 2
 
 			-- User Commands
-			vim.api.nvim_create_user_command("MarknavJump", CmdHandler.forward_jump, { nargs = 0 })
-			vim.api.nvim_create_user_command("MarknavBack", CmdHandler.back_jump, { nargs = 0 })
-			vim.api.nvim_create_user_command("MarknavTab", CmdHandler.forward_tab_jump, { nargs = 0 })
+			vim.api.nvim_create_user_command("FollowLink", CmdHandler.follow_link, { nargs = 0 })
+			vim.api.nvim_create_user_command("FollowBack", CmdHandler.follow_back, { nargs = 0 })
+			vim.api.nvim_create_user_command("FollowLinkInNewTab", CmdHandler.follow_link_in_new_tab, { nargs = 0 })
 		end,
 	})
 end
