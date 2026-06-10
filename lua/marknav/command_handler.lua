@@ -1,5 +1,5 @@
-local LinkParser = require("marknav/link_parser")
-local BufferManager = require("marknav/buffer_manager")
+local LinkParser = require("marknav.link_parser")
+local BufferManager = require("marknav.buffer_manager")
 
 local M = {}
 
