@@ -3,7 +3,9 @@ local M = {}
 
 local utils = require("marknav.utils")
 
+---@type luaPattern
 local MARKDOWN_LINK_PATTERN = "%[[^%]]+%]%(([^%)%]]*)%)"
+---@type luaPattern
 local WIKILINK_PATTERN = "%[%[([^|%]]+)[^%]]*%]%]"
 
 local ERRORS = {
@@ -13,21 +15,27 @@ local ERRORS = {
 	MISSING_CAPTURE = "Could not extract link target.",
 }
 
+---@param path filePath
 ---@param opts? { tab?: boolean }
 local function open_path(path, opts)
-	local cmd = (opts and opts.tab) and "tabnew " or "edit "
-	vim.api.nvim_command(cmd .. path)
+	if opts and opts.tab then
+		vim.cmd.tabnew({ args = { path } })
+	else
+		vim.cmd.edit({ args = { path } })
+	end
 end
 
----Search for markdown links within input string and return a table of matches <br>
+---Search for links within input string and return a table of matches <br>
 ---or nil if no matches found.
 ---@param str string The string to search within
+---@param pattern luaPattern
+---@param kind LinkKind either "markdown" or "wikilink"
 ---@return LinkMatch[]|nil
-local function find_markdown_matches(str)
+local function find_link_matches(str, pattern, kind)
 	local matches = {}
 	local start = 1
 	while start <= #str do
-		local startIdx, endIdx, capture = string.find(str, MARKDOWN_LINK_PATTERN, start)
+		local startIdx, endIdx, capture = string.find(str, pattern, start)
 		if not startIdx then
 			break
 		end
@@ -36,43 +44,13 @@ local function find_markdown_matches(str)
 			startIdx = startIdx,
 			endIdx = endIdx,
 			capture = capture,
-			kind = "markdown",
+			kind = kind,
 		})
 
 		start = startIdx + math.max(1, endIdx - startIdx + 1)
 	end
 
-	if utils.is_table_empty(matches) then
-		return nil
-	end
-
-	return matches
-end
-
----Search for wikilinks within input string and return a table of matches <br>
----or nil if no matches found.
----@param str string The string to search within
----@return LinkMatch[]|nil
-local function find_wikilink_matches(str)
-	local matches = {}
-	local start = 1
-	while start <= #str do
-		local startIdx, endIdx, capture = string.find(str, WIKILINK_PATTERN, start)
-		if not startIdx then
-			break
-		end
-
-		table.insert(matches, {
-			startIdx = startIdx,
-			endIdx = endIdx,
-			capture = capture,
-			kind = "wikilink",
-		})
-
-		start = startIdx + math.max(1, endIdx - startIdx + 1)
-	end
-
-	if utils.is_table_empty(matches) then
+	if #matches == 0 then
 		return nil
 	end
 
@@ -80,10 +58,11 @@ local function find_wikilink_matches(str)
 end
 
 ---Find all links in an input string
+---@param str string The string to search within
 ---@return LinkMatch[]|nil
 function M.get_links(str)
-	local markdown_links = find_markdown_matches(str)
-	local wikilinks = find_wikilink_matches(str)
+	local markdown_links = find_link_matches(str, MARKDOWN_LINK_PATTERN, "markdown")
+	local wikilinks = find_link_matches(str, WIKILINK_PATTERN, "wikilink")
 
 	if wikilinks == nil then
 		return markdown_links
