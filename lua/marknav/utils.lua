@@ -56,13 +56,13 @@ function M.is_link_valid(filepath)
 		return false, "Link path is empty."
 	end
 
-	if filepath:match(FORBIDDEN_FILENAME_CHARS) then
-		return false, "Path contains forbidden characters."
-	end
-
 	local basename = get_file_basename(filepath)
 	if basename == nil then
 		return false, "Path has no filename."
+	end
+
+	if basename:match(FORBIDDEN_FILENAME_CHARS) then
+		return false, "Filename contains forbidden characters."
 	end
 
 	if basename:match(INVALID_FILENAME_ENDING) then
