@@ -1,9 +1,6 @@
 -- utils.lua
 local M = {}
 
----@alias luaPattern string
----@alias filePath string
-
 ---Characters forbidden in a filename (mostly Windows rules)
 ---@type luaPattern
 local FORBIDDEN_FILENAME_CHARS = '[<>:"|?*]'
