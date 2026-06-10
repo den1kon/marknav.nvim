@@ -23,11 +23,7 @@ end
 ---Pop and return the previous buffer from the stack
 ---@return integer|nil bufnr Buffer number, or nil if stack is empty
 function M.get_previous_buffer()
-	local temp_stack = vim.w.buffer_stack
-
-	if temp_stack == nil then
-		return nil
-	end
+	local temp_stack = vim.w.buffer_stack or {}
 
 	if #temp_stack <= 1 then
 		return nil
