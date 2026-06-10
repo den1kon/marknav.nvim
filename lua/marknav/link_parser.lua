@@ -161,8 +161,11 @@ function M.follow_link_at_cursor(opts)
 	end
 
 	local capture = link_match.capture
-	if capture == nil or capture == "" then
+	if capture == nil then
 		return false, ERRORS.MISSING_CAPTURE
+	end
+	if capture == "" then
+		return false, ERRORS.EMPTY_LINK_TARGET
 	end
 
 	if link_match.kind == "wikilink" then
