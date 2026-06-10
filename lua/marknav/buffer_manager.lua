@@ -9,7 +9,7 @@ function M.handle_stack()
 	if #temp_stack > 0 and current_buf == temp_stack[#temp_stack] then
 		table.remove(temp_stack)
 	end
-	-- If the stack got too big, then start removing the last elements
+	-- If the stack got too big, then start removing the oldest elements
 	if #temp_stack > 1000 then
 		table.remove(temp_stack, 1)
 	end
