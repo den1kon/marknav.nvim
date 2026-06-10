@@ -13,7 +13,7 @@ function M.apply_to_buffer(config)
 
 	vim.opt_local.conceallevel = 2
 
-	if c.cursor ~= "" then
+	if type(c.cursor) == "string" and c.cursor ~= "" then
 		vim.opt_local.concealcursor = c.cursor
 	end
 
