@@ -27,14 +27,17 @@ function M.get_previous_buffer()
 	end
 
 	table.remove(temp_stack)
-	local prev_buf = table.remove(temp_stack)
-	vim.w.buffer_stack = temp_stack
 
-	if prev_buf ~= nil and not vim.api.nvim_buf_is_valid(prev_buf) then
-		return nil
+	while #temp_stack > 0 do
+		local prev_buf = table.remove(temp_stack)
+		if prev_buf ~= nil and vim.api.nvim_buf_is_valid(prev_buf) then
+			vim.w.buffer_stack = temp_stack
+			return prev_buf
+		end
 	end
 
-	return prev_buf
+	vim.w.buffer_stack = temp_stack
+	return nil
 end
 
 return M
