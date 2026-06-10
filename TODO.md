@@ -1,6 +1,6 @@
 <div align="center">
 
-# Marknav TODO
+# TODO
 
 </div>
 
@@ -10,8 +10,8 @@ Utilize buffers, windows and tabs.
 
 - [x] Windows support through Vim's `fnamemodify` and native path recognition
 - [x] Better filetype detect and make plugin usable only in markdown files
-- [x] Default keymaps
-- [x] Open link in a new tab (similar to "Shift+Enter" in browser)
+- [ ] Default keymaps
+- [x] Open link in a new tab (similar to "Ctrl + Left Click" in browser)
     * [ ] Tab title should be file name
 - [ ] Open link side-by-side - window split
    * [x] Improve buffer logic
@@ -38,15 +38,15 @@ Implement cache in lua or with built-in neo(vim) features?
 - [x] Window-scoped buffer stack (lua table with buffer chain) using `BufEnter` autocmd
 
 ## Minor
-- [x] Recognize ToC links (links that are in bullet lists)
+- [ ] Recognize ToC links (links that are in bullet lists)
 - [x] Clean bottom message line on link follow
 - [x] Red error message
-- [x] Disable `:MarknavJump` to the same file
+- [ ] Disable `:FollowLink` to the same file
 - [x] Support absolute paths and paths relative to the directory the file is in
-- [x] `:MarknavJump` recognize different links on the same line
+- [x] `:FollowLink` recognize different links on the same line
 - [x] If the link is valid, but file doesn't exist - create new file
 
-- [ ] ? Autosave on `:MarknavJump` and `:MarknavBack`
+- [ ] ? Autosave on `:FollowLink` and `:FollowBack`
 - [ ] ? Consider using `fnamemodify()` for path concatenation. Should be platform-indepent and more robust
 - [ ] ? Add bullet list and numbered list characters to pattern ("*", "-", "10.")
 - [ ] ? Consider `gf` and `goto` built-in commands
