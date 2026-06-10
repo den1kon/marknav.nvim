@@ -114,7 +114,7 @@ local function follow_markdown_link(markdown_link, opts)
 		return false, ERRORS.EMPTY_LINK_TARGET
 	end
 
-	local valid, reason = utils.isLinkValid(markdown_link)
+	local valid, reason = utils.is_link_valid(markdown_link)
 	if not valid then
 		return false, reason
 	end
@@ -138,12 +138,12 @@ local function follow_wikilink(wikilink, opts)
 		return false, ERRORS.EMPTY_LINK_TARGET
 	end
 
-	local valid, reason = utils.isLinkValid(wikilink)
+	local valid, reason = utils.is_link_valid(wikilink)
 	if not valid then
 		return false, reason
 	end
 
-	if utils.getFileExtension(wikilink) == "" then
+	if utils.get_file_extension(wikilink) == "" then
 		wikilink = wikilink .. ".md"
 	end
 

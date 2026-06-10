@@ -44,14 +44,14 @@ end
 
 ---@param filepath filePath
 ---@return string fileExtension
-function M.getFileExtension(filepath)
+function M.get_file_extension(filepath)
 	return vim.fn.fnamemodify(filepath, ":t:e")
 end
 
 ---@param filepath filePath|nil Relative/absolute file path
 ---@return boolean valid
 ---@return string|nil reason
-function M.isLinkValid(filepath)
+function M.is_link_valid(filepath)
 	if filepath == nil or filepath == "" then
 		return false, "Link path is empty."
 	end
