@@ -3,14 +3,6 @@ local M = {}
 
 local utils = require("marknav.utils")
 
----@alias LinkKind "markdown" | "wikilink"
-
----@class (exact) LinkMatch
----@field startIdx integer
----@field endIdx integer
----@field capture string|nil
----@field kind LinkKind
-
 local MARKDOWN_LINK_PATTERN = "%[[^%]]+%]%(([^%)%]]*)%)"
 local WIKILINK_PATTERN = "%[%[([^|%]]+)[^%]]*%]%]"
 
