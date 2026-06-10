@@ -128,7 +128,6 @@ local function follow_markdown_link(markdown_link, opts)
 	return true, nil
 end
 
----Currently works only with flat filesystem
 ---@param wikilink filePath
 ---@param opts? { tab?: boolean }
 ---@return boolean ok
@@ -143,11 +142,17 @@ local function follow_wikilink(wikilink, opts)
 		return false, reason
 	end
 
-	if utils.get_file_extension(wikilink) == "" then
-		wikilink = wikilink .. ".md"
+	local path = wikilink
+	if utils.get_file_extension(path) == "" then
+		path = path .. ".md"
 	end
 
-	open_path(wikilink, opts)
+	local absolute_path = path
+	if not utils.is_absolute_path(absolute_path) then
+		absolute_path = utils.expand_relative_path(path)
+	end
+
+	open_path(absolute_path, opts)
 	return true, nil
 end
 
