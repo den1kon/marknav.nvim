@@ -1,7 +1,7 @@
 -- link_parser.lua
 local M = {}
 
-local utils = require("marknav.utils")
+local utils = require("slipnote.utils")
 
 ---@type luaPattern
 local MARKDOWN_LINK_PATTERN = "%[[^%]]+%]%(([^%)%]]*)%)"
