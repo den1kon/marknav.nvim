@@ -8,7 +8,7 @@ local M = {}
 ---@type luaPattern
 local FORBIDDEN_FILENAME_CHARS = '[<>:"|?*]'
 
---- Filename cannot end with a dot (Windows rule)
+--- Filename cannot end with a dot or trailing space (Windows rule)
 ---@type luaPattern
 local INVALID_FILENAME_ENDING = "[%s%.]$"
 
