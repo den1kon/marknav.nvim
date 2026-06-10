@@ -9,12 +9,12 @@ local FORBIDDEN_FILENAME_CHARS = '[<>:"|?*]'
 ---@type luaPattern
 local INVALID_FILENAME_ENDING = "[%s%.]$"
 
----Check whether generic lua table is empty
----@param tbl table Lua table
----@return boolean
-function M.is_table_empty(tbl)
-	return next(tbl) == nil
-end
+-- ---Check whether generic lua table is empty
+-- ---@param tbl table Lua table
+-- ---@return boolean
+-- function M.is_table_empty(tbl)
+-- 	return next(tbl) == nil
+-- end
 
 ---Check whether filepath is an absolute path
 ---@param path filePath Filepath
