@@ -7,6 +7,9 @@ M.defaults = {
 		wikilinks = false,
 		cursor = "",
 	},
+	frontmatter = {
+		enable = false,
+	},
 }
 
 ---@param user_config? SlipnoteConfig
@@ -29,6 +32,18 @@ end
 ---@return boolean
 function M.conceal_enabled(config)
 	return M.get_conceal(config).enable == true
+end
+
+function M.get_frontmatter(config)
+	local f = config.frontmatter
+	if type(f) ~= "table" then
+		return M.defaults.frontmatter
+	end
+	return f
+end
+
+function M.frontmatter_enabled(config)
+  return M.get_frontmatter(config).enable == true
 end
 
 return M
