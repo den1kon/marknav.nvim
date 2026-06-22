@@ -1,10 +1,13 @@
 local LinkParser = require("slipnote.link_parser")
 local BufferManager = require("slipnote.buffer_manager")
+local Frontmatter = require("slipnote.frontmatter")
 
 local M = {}
 
 local function print_err(err)
-	vim.api.nvim_err_writeln("SLIPNOTE: " .. err)
+	-- legacy
+	-- vim.api.nvim_err_writeln("SLIPNOTE: " .. err)
+	vim.notify("SLIPNOTE: " .. err, vim.log.levels.WARN)
 end
 
 -- Jump to previous buffer unless stack is empty
@@ -23,6 +26,10 @@ function M.follow_link()
 	if not ok then
 		print_err(err or "Failed to follow link.")
 	end
+end
+
+function M.insert_frontmatter()
+	Frontmatter.insert_frontmatter()
 end
 
 -- Opens a link at the cursor location IN A NEW TAB

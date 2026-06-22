@@ -12,6 +12,8 @@ function M.apply_to_buffer(config)
 	end
 
 	vim.opt_local.conceallevel = 2
+	vim.opt_local.colorcolumn = "100"
+	vim.opt_local.textwidth = 100
 
 	if type(c.cursor) == "string" and c.cursor ~= "" then
 		vim.opt_local.concealcursor = c.cursor
@@ -19,17 +21,6 @@ function M.apply_to_buffer(config)
 
 	if c.wikilinks then
 		WikilinkSyntax.apply()
-	end
-end
-
----@param config SlipnoteConfig
-local function apply_to_loaded_markdown_buffers(config)
-	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype == "markdown" then
-			vim.api.nvim_buf_call(buf, function()
-				M.apply_to_buffer(config)
-			end)
-		end
 	end
 end
 
@@ -47,12 +38,6 @@ function M.setup(config, augroup)
 			M.apply_to_buffer(config)
 		end,
 	})
-
-	-- lazy.nvim ft=markdown: slipnote loads after FileType on the triggering buffer.
-	-- Defer one tick, then patch buffers that already have markdown syntax.
-	vim.schedule(function()
-		apply_to_loaded_markdown_buffers(config)
-	end)
 end
 
 return M
