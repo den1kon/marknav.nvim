@@ -4,7 +4,9 @@ local BufferManager = require("slipnote.buffer_manager")
 local M = {}
 
 local function print_err(err)
-	vim.api.nvim_err_writeln("SLIPNOTE: " .. err)
+	-- legacy
+	-- vim.api.nvim_err_writeln("SLIPNOTE: " .. err)
+	vim.notify("SLIPNOTE: " .. err, vim.log.levels.WARN)
 end
 
 -- Jump to previous buffer unless stack is empty
