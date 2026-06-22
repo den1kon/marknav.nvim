@@ -12,6 +12,8 @@ function M.apply_to_buffer(config)
 	end
 
 	vim.opt_local.conceallevel = 2
+	vim.opt_local.colorcolumn = "100"
+	vim.opt_local.textwidth = 100
 
 	if type(c.cursor) == "string" and c.cursor ~= "" then
 		vim.opt_local.concealcursor = c.cursor
