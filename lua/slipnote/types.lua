@@ -15,5 +15,10 @@
 ---@field wikilinks? boolean Apply [[wikilink]] conceal syntax (default: false)
 ---@field cursor? string Set concealcursor (default: "")
 
+
+---@class SlipnoteFormatConfig
+---@field enable? boolean Master switch
+
 ---@class SlipnoteConfig
 ---@field conceal? SlipnoteConcealConfig
+---@field frontmatter? SlipnoteFormatConfig
