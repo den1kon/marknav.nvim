@@ -1,6 +1,8 @@
 -- frontmatter.lua
 local M = {}
 local utils = require("slipnote.utils")
+local Config = require("slipnote.config")
+local CmdHandler = require("slipnote.command_handler")
 
 ---Checks if buffer has frontmatter
 ---@param buffer number Buffer id
@@ -28,17 +30,17 @@ end
 
 ---Generates YAML frontmatter
 ---@return string[]
-function M.generate_yaml_frontmatter()
+local function generate_yaml_frontmatter()
 	local now = utils.generate_unix_timestamp()
 	local utc_ts = utils.generate_iso8601_utc_timestamp(now)
 
 	local frontmatter = {
 		"---",
-		'id: ' .. now,
+		"id: " .. now,
 		'created_at: "' .. utc_ts .. '"',
 		'updated_at: "' .. utc_ts .. '"',
-		'tags: ',
-		'  - fleeting-note',
+		"tags: ",
+		"  - fleeting-note",
 		"---",
 		"",
 	}
@@ -56,7 +58,7 @@ function M.insert_frontmatter()
 		return false
 	end
 
-	local frontmatter = M.generate_yaml_frontmatter()
+	local frontmatter = generate_yaml_frontmatter()
 
 	-- TODO: save the current position of the cursor and put it back after inserting
 
@@ -73,7 +75,7 @@ end
 function M.update_frontmatter_updated_at(bufnr)
 	bufnr = bufnr or 0
 
-	if vim.api.nvim_buf_get_option(bufnr, "filetype") ~= "markdown" then
+	if vim.api.nvim_get_option_value("filetype", { buf = bufnr }) ~= "markdown" then
 		return
 	end
 
@@ -98,6 +100,27 @@ function M.update_frontmatter_updated_at(bufnr)
 	local utc_ts = utils.generate_iso8601_utc_timestamp()
 	lines[updated_at_line] = 'updated_at: "' .. utc_ts .. '"'
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+end
+
+---@param config SlipnoteConfig
+---@param augroup integer
+function M.setup(config, augroup)
+	if not Config.frontmatter_enabled(config) then
+		return
+	end
+
+	vim.api.nvim_create_user_command(
+		"InsertFrontmatter",
+		CmdHandler.insert_frontmatter,
+		{ desc = "Insert YAML frontmatter" }
+	)
+
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup,
+		callback = function(args)
+			M.update_frontmatter_updated_at(args.buf)
+		end,
+	})
 end
 
 return M
