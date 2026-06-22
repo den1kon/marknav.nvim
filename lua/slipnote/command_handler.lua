@@ -28,10 +28,6 @@ function M.follow_link()
 	end
 end
 
-function M.insert_frontmatter()
-	Frontmatter.insert_frontmatter()
-end
-
 -- Opens a link at the cursor location IN A NEW TAB
 function M.follow_link_in_new_tab()
 	local ok, err = LinkParser.follow_link_at_cursor({ tab = true })
