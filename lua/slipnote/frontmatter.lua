@@ -2,7 +2,6 @@
 local M = {}
 local utils = require("slipnote.utils")
 local Config = require("slipnote.config")
-local CmdHandler = require("slipnote.command_handler")
 
 ---Checks if buffer has frontmatter
 ---@param buffer number Buffer id
@@ -111,7 +110,7 @@ function M.setup(config, augroup)
 
 	vim.api.nvim_create_user_command(
 		"InsertFrontmatter",
-		CmdHandler.insert_frontmatter,
+		M.insert_frontmatter,
 		{ desc = "Insert YAML frontmatter" }
 	)
 
