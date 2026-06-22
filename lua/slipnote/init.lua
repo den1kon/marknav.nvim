@@ -9,11 +9,23 @@ local M = {}
 ---@param user_config? SlipnoteConfig
 function M.setup(user_config)
 	local config = Config.resolve(user_config)
+	local frontmatter_config = Config.get_frontmatter(config)
 
-	vim.api.nvim_create_user_command("FollowLink", CmdHandler.follow_link, { nargs = 0 })
-	vim.api.nvim_create_user_command("FollowBack", CmdHandler.follow_back, { nargs = 0 })
-	vim.api.nvim_create_user_command("FollowLinkInNewTab", CmdHandler.follow_link_in_new_tab, { nargs = 0 })
-	vim.api.nvim_create_user_command("InsertFrontmatter", CmdHandler.insert_frontmatter, { nargs = 0 })
+	vim.api.nvim_create_user_command("FollowLink", CmdHandler.follow_link, { desc = "Follow link at cursor" })
+	vim.api.nvim_create_user_command("FollowBack", CmdHandler.follow_back, { desc = "Go back to previos buffer" })
+	vim.api.nvim_create_user_command(
+		"FollowLinkInNewTab",
+		CmdHandler.follow_link_in_new_tab,
+		{ desc = "Follow link at cursor in new tab" }
+	)
+
+	if Config.frontmatter_enabled(config) then
+		vim.api.nvim_create_user_command(
+			"InsertFrontmatter",
+			CmdHandler.insert_frontmatter,
+			{ desc = "Insert YAML frontmatter" }
+		)
+	end
 
 	local augroup = vim.api.nvim_create_augroup("SlipnoteAutocommands", { clear = true })
 
