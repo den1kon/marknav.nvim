@@ -9,6 +9,10 @@ local FORBIDDEN_FILENAME_CHARS = '[<>:"|?*]'
 ---@type luaPattern
 local INVALID_FILENAME_ENDING = "[%s%.]$"
 
+---Date and time UTC ISO8601 template
+---@type string
+local iso8601_template = "!%Y-%m-%dT%H:%M:%SZ"
+
 -- ---Check whether generic lua table is empty
 -- ---@param tbl table Lua table
 -- ---@return boolean
@@ -21,6 +25,25 @@ local INVALID_FILENAME_ENDING = "[%s%.]$"
 ---@return boolean
 function M.is_absolute_path(path)
 	return vim.fn.fnamemodify(path, ":p") == path
+end
+
+---Generates an ISO8601 date and time timestamp in UTC
+---@param epoch? integer Unix timestamp; defaults to current time
+---@return string|osdate
+function M.generate_iso8601_utc_timestamp(epoch)
+	return os.date(iso8601_template, epoch)
+end
+
+---Generates a Unix timestamp (seconds since epoch)
+---@return integer
+function M.generate_unix_timestamp()
+	return os.time()
+end
+
+---@return number
+function M.get_current_buffer()
+	-- I guess it could also just be 0?
+	return vim.api.nvim_get_current_buf()
 end
 
 ---Expand relative filepath to an absolute filepath
