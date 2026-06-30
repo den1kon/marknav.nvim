@@ -38,7 +38,7 @@ local function generate_yaml_frontmatter()
 		"id: " .. now,
 		'created_at: "' .. utc_ts .. '"',
 		'updated_at: "' .. utc_ts .. '"',
-		"tags: ",
+		"tags:",
 		"  - fleeting-note",
 		"---",
 		"",
